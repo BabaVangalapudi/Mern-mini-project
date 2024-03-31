@@ -1,0 +1,29 @@
+body{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    cursor: auto;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.input-each{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 10px;
+}
+.register-btn{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 10px;
+    width: 100%;
+}
