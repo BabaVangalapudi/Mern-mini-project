@@ -34,6 +34,7 @@ const Register = () => {
   }
   return (
     <div className='container'>
+      <h2>Registeration</h2>
       <form onSubmit={handleSubmit}>
         <div className='input-each'>
           <label htmlFor="username">Username</label>
