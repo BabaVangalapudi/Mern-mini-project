@@ -21,7 +21,7 @@ const Login = () => {
     axios.post("http://localhost:3001/login", { username, password })
       .then(result => {
         if (result.data === "Success") {
-          toast.success("Login Successful");
+          toast("Login Successful");
           navigate('/home')
         } else {
           setErrorMessage("Incorrect Password")

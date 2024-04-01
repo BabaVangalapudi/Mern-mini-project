@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 import axios from "axios"
 import "./index.css"
 
@@ -10,7 +9,7 @@ const Register = () => {
   const [password, setPassword] = useState("")
   const [confirmpass, setConfirmpass] = useState("")
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate()
+  const [successMessage, setSuccessMessage] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!username || !email || !password || !confirmpass) {
@@ -24,9 +23,15 @@ const Register = () => {
     setErrorMessage('');
     axios.post("http://localhost:3001",{username, email,password,confirmpass})
     .then(result => {
-    setErrorMessage("Your account created now you can login")
+      if (result.data === 'Username already exists') {
+        setErrorMessage("User already exists")
+      } else {
+        setSuccessMessage("Your account created now you can login")
+      }
     })
-    .catch(err=> console.log(err))
+    .catch(err => {
+      setErrorMessage('Something went wrong. Please try again later.');
+      console.log(err)})
     setUsername("")
     setEmail("")
     setPassword("")
@@ -58,6 +63,7 @@ const Register = () => {
         </div>
         <button className='register-btn'>Register</button>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
+        {successMessage && <div className="success-message">{successMessage}</div>}
       </form>
       <div>
         <Link to="/login"><button className='register-btn'>Login</button></Link>
