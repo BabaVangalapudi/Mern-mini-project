@@ -1,21 +1,33 @@
-import { BrowserRouter, Routes,Route} from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
-import Home from './components/Home';
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Home from "./components/Home";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
- return(
-  <div>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Register/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='/home' element={<Home/>}></Route>
-      </Routes>
-    </BrowserRouter>
-  </div>
- )
+  const toastTrigger = (cond) => {
+    if (cond === "success") {
+      toast.success("Login Successful");
+    } else {
+      toast.error("Login Error");
+    }
+  };
+  return (
+    <div>
+      <ToastContainer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Register />}></Route>
+          <Route
+            path="/login"
+            element={<Login toastTrigger={toastTrigger} />}
+          ></Route>
+          <Route path="/home" element={<Home />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
-export default App
+export default App;

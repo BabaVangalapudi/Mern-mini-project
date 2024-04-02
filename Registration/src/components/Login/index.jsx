@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom'
 import "../Register/index.css"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-const Login = () => {
+const Login = ({toastTrigger}) => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errorMessage, setErrorMessage] = useState('');
@@ -21,9 +19,10 @@ const Login = () => {
     axios.post("http://localhost:3001/login", { username, password })
       .then(result => {
         if (result.data === "Success") {
-          toast("Login Successful");
+          toastTrigger("success")
           navigate('/home')
         } else {
+          toastTrigger("err")
           setErrorMessage("Incorrect Password")
         }
       })
@@ -51,7 +50,7 @@ const Login = () => {
       <div>
         <Link to="/"><button className='register-btn'>Register</button></Link>
       </div>
-      <ToastContainer />
+  
     </div>
   )
 }
