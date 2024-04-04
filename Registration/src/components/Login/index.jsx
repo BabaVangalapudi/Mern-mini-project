@@ -20,7 +20,7 @@ const Login = ({toastTrigger}) => {
       .then(result => {
         if (result.data === "Success") {
           toastTrigger("success")
-          navigate('/home')
+          navigate(`/home?username=${username}`);
         } else {
           toastTrigger("err")
           setErrorMessage("Incorrect Password")
@@ -36,12 +36,12 @@ const Login = ({toastTrigger}) => {
       <form onSubmit={handleSubmit}>
         <div className='input-each'>
           <label htmlFor="username">Username</label>
-          <input type="text" name='username' placeholder='Enter your name' id='username' value={username} onChange={(e) => setUsername
+          <input className='input-box' type="text" name='username' placeholder='Enter your name' id='username' value={username} onChange={(e) => setUsername
             (e.target.value)} />
         </div>
         <div className='input-each'>
           <label htmlFor="password">Password</label>
-          <input type="password" name='password' placeholder='Set your password' id='password' value={password}
+          <input className='input-box' type="password" name='password' placeholder='Set your password' id='password' value={password}
             onChange={(e) => setPassword(e.target.value)} />
         </div>
         <button className='register-btn'>Login</button>
