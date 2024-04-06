@@ -4,6 +4,7 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProtectedContent from "./components/ProtectedContent";
 
 function App() {
   const toastTrigger = (cond) => {
@@ -23,7 +24,9 @@ function App() {
             path="/login"
             element={<Login toastTrigger={toastTrigger} />}
           ></Route>
-          <Route path="/home" element={<Home />}></Route>
+          <Route element={<ProtectedContent />}>
+            <Route path="/home" element={<Home />}></Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
