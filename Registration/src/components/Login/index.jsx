@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../Register/index.css";
+import "./index.css";
 import axios from "axios";
 import { useNavigate, Navigate } from "react-router-dom";
 
@@ -37,9 +37,9 @@ const Login = ({ toastTrigger }) => {
     return <Navigate to="/home" />;
   }
   return (
-    <div className="container">
+    <div className="login-container">
+      <form onSubmit={handleSubmit} className="login-form">
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
         <div className="input-each">
           <label htmlFor="username">Username</label>
           <input
@@ -64,12 +64,12 @@ const Login = ({ toastTrigger }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className="register-btn">Login</button>
+        <button className="register-btn login-page-buttons">Login</button>
         {errorMessage && <div className="error-message">{errorMessage}</div>}
       </form>
       <div>
         <Link to="/">
-          <button className="register-btn">Register</button>
+          {/* <button className="register-btn login-page-buttons">Register</button> */}
         </Link>
       </div>
     </div>

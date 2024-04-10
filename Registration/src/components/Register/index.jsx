@@ -39,8 +39,8 @@ const Register = () => {
   }
   return (
     <div className='container'>
-      <h2>Registeration</h2>
-      <form onSubmit={handleSubmit}>
+      <h2>Registration</h2>
+      <form onSubmit={handleSubmit} className='form-style'>
         <div className='input-each'>
           <label htmlFor="username">Username</label>
           <input className='input-box' type="text" name='username' autoComplete='off' placeholder='Enter your name' id='username' value={username} onChange={(e)=>setUsername
